@@ -1,15 +1,12 @@
 import { Router } from 'express';
 import BattleController from '../app/Controllers/BattleController';
-import PlayerController from '../app/Controllers/PlayerController';
 const router = Router();
 
 // Api routes
 
-// Players
-router.post('/register', PlayerController.register);
-router.post('/login', PlayerController.login);
-
 // Battle
-router.post('/create-battle/:autor', BattleController.create);
+router.post('/create-battle', BattleController.create);
+router.post('/join-battle', BattleController.join);
+router.post('/battle-info', BattleController.info);
 
 export default router;

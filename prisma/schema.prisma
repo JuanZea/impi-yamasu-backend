@@ -7,20 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model player {
-  id    Int     @id @default(autoincrement())
-  name  String?
-  password  String?
-  battles battle[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 model battle {
-  id    Int     @id @default(autoincrement())
-  author  player @relation(fields: [authorId], references: [id])
-  authorId  Int
+  id    Int     @id
   open  Boolean
+  hostPlayer String
+  guestPlayer String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
