@@ -8,4 +8,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial setup on typescript Api
 
-[Unreleased]: https://github.com/JuanZea/impi-yamasu/tree/develop
+[Unreleased]: https://github.com/JuanZea/impi-yamasu-backend/tree/develop
