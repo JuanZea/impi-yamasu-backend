@@ -8,5 +8,6 @@ const router = Router();
 router.post('/create-battle', BattleController.create);
 router.post('/join-battle', BattleController.join);
 router.post('/battle-info', BattleController.info);
+router.post('/start-battle', BattleController.start);
 
 export default router;

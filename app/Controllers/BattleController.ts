@@ -42,10 +42,32 @@ export default {
     info: async (req: Request, res: Response) => {
         let status: number = 200;
 
+        const battle = await prisma.battle.findUnique({
+            where: {
+                id: validateId(req.body.id),
+            },
+        });
+
+        res.send(battle).status(status);
+    },
+
+    start: async (req: Request, res: Response) => {
+        let status: number = 200;
+
         let battle = await prisma.battle.findUnique({
             where: {
                 id: validateId(req.body.id),
             },
+        });
+
+        const data: {[k: string]: any} = {};
+
+        if(req.body.rol === 'host') data.hostPerks = req.body.perks
+        if(req.body.rol === 'guest') data.guestPerks = req.body.perks
+
+        battle = await prisma.battle.update({
+            where: { id: battle.id },
+            data,
         });
 
         res.send(battle).status(status);

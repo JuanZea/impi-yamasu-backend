@@ -12,6 +12,8 @@ model battle {
   open  Boolean
   hostPlayer String
   guestPlayer String?
+  hostPerks Json?
+  guestPerks Json?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
