@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model player {
+  id    Int     @id @default(autoincrement())
+  name  String?
+  password  String?
+  battles battle[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model battle {
+  id    Int     @id @default(autoincrement())
+  author  player @relation(fields: [authorId], references: [id])
+  authorId  Int
+  open  Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

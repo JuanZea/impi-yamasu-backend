@@ -1,10 +1,20 @@
 import { Request, Response } from 'express';
+import { PrismaClient } from '@prisma/client';
+import { validateAuthorId } from '../helpers/validators';
+
+const prisma = new PrismaClient();
 
 export default {
     create: async (req: Request, res: Response) => {
         let status: number = 200;
-        let response: Object = {};
 
-        res.send(response).status(status);
+        const newBattle = await prisma.battle.create({
+            data: {
+                authorId: validateAuthorId(req.params.autor),
+                open: true,
+            },
+        });
+
+        res.send(newBattle).status(status);
     },
 };
